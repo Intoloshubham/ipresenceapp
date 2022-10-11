@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React from 'react';
 import {
@@ -16,33 +9,25 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider } from '@ui-kitten/components';
+import Tabs from './navigation/tabs';
 
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView >
-      <Text>  dsfsdfksd</Text>
-    </SafeAreaView>
+    <ApplicationProvider {...eva} theme={eva.light} >
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Dashboard" component={Tabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ApplicationProvider>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

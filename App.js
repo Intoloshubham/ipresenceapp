@@ -19,17 +19,9 @@ import {
 
 
 const App = () => {
-  
-
   return (
     <SafeAreaView >
-     
-      
-       
-          
-          <Text>  dsfsdfksd</Text>
-          
-          
+      <Text>  dsfsdfksd</Text>
     </SafeAreaView>
   );
 };

@@ -1,5 +1,5 @@
 package com.ipresenceapp;
-
+import com.swmansion.rnscreens.RNScreensPackage;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;

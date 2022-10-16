@@ -21,7 +21,10 @@ const App = () => {
   return (
     <ApplicationProvider {...eva} theme={eva.light} >
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          initialRouteName='Dashboard'
+          screenOptions={{ headerShown: false }}
+        >
           <Stack.Screen name="Dashboard" component={Tabs} />
         </Stack.Navigator>
       </NavigationContainer>

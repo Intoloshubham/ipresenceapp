@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {COLORS, FONTS, SIZES} from '../constants';
+import { View, Text, TextInput } from 'react-native';
+import { COLORS, FONTS, SIZES } from '../constants';
 
 const FormInput = ({
   containerStyle,
@@ -19,10 +19,12 @@ const FormInput = ({
   multiline,
   numberOfLines,
   editable,
+  onFocus,
+  onBlur
 }) => {
   return (
-    <View style={{...containerStyle}}>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+    <View style={{ ...containerStyle }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text
           style={{
             color: COLORS.darkGray,
@@ -31,7 +33,7 @@ const FormInput = ({
           }}>
           {label}
         </Text>
-        <Text style={{color: COLORS.red, ...FONTS.body4}}>{errorMsg}</Text>
+        {/* <Text style={{color: COLORS.red, ...FONTS.body4}}>{errorMsg}</Text> */}
       </View>
       <View
         style={{
@@ -44,7 +46,7 @@ const FormInput = ({
         }}>
         {prependComponent}
         <TextInput
-          style={{flex: 1, ...inputStyle, color: COLORS.black}}
+          style={{ flex: 1, ...inputStyle, color: COLORS.black }}
           placeholder={placeholder}
           placeholderTextColor={COLORS.darkGray}
           secureTextEntry={secureTextEntry}
@@ -56,9 +58,12 @@ const FormInput = ({
           multiline={multiline}
           numberOfLines={numberOfLines}
           editable={editable}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
         {appendComponent}
       </View>
+      <Text style={{ color: COLORS.red, ...FONTS.body4 }}>{errorMsg}</Text>
     </View>
   );
 };

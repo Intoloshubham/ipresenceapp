@@ -1,41 +1,41 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, SIZES, icons, images } from '../constants';
-
+import { Account, Setting, Profile, Calander } from '../screens/bottomTabs/index.js';
 import UserDashboard from '../screens/companyDashboard/UserDashboard.js';
 const Tab = createBottomTabNavigator();
 
-const TabBarCustomButton = ({ children, onPress }) => {
-  return (
-    <TouchableOpacity
-      style={{
-        top: -12,
-        justifyContent: 'center',
-        alignItems: 'center',
-        ...styles.shadow,
-      }}
-      onPress={onPress}>
-      <LinearGradient
-        colors={[COLORS.success_400, COLORS.success_800]}
-        style={{
-          width: 45,
-          height: 45,
-          borderRadius: 35,
-        }}>
-        {children}
-      </LinearGradient>
-      <Text
-        style={{
-          color: COLORS.black,
-          ...FONTS.body5,
-        }}>
-        Report
-      </Text>
-    </TouchableOpacity>
-  );
-};
+// const TabBarCustomButton = ({ children, onPress }) => {
+//   return (
+//     <TouchableOpacity
+//       style={{
+//         top: -12,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         ...styles.shadow,
+//       }}
+//       onPress={onPress}>
+//       <LinearGradient
+//         colors={[COLORS.success_400, COLORS.success_800]}
+//         style={{
+//           width: 45,
+//           height: 45,
+//           borderRadius: 35,
+//         }}>
+//         {children}
+//       </LinearGradient>
+//       <Text
+//         style={{
+//           color: COLORS.black,
+//           ...FONTS.body5,
+//         }}>
+//         Report
+//       </Text>
+//     </TouchableOpacity>
+//   );
+// };
 const Tabs = () => {
   return (
     <Tab.Navigator
@@ -52,27 +52,26 @@ const Tabs = () => {
           borderTopColor: 'transparent',
           height: 100,
         },
-        headerTitleAlign: 'left',
-        headerRight: () => (
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: SIZES.radius,
-            }}>
-            <Image
-              source={images.consoft_PNG}
-              resizeMode="contain"
-              style={{ height: 100, width: 100 }}
-            />
-          </View>
-        ),
+        // headerTitleAlign: 'left',
+        // headerRight: () => (
+        //   <View
+        //     style={{
+        //       alignItems: 'center',
+        //       justifyContent: 'center',
+        //       marginHorizontal: SIZES.radius,
+        //     }}>
+        //     <Image
+        //       source={images.consoft_PNG}
+        //       resizeMode="contain"
+        //       style={{ height: 100, width: 100 }}
+        //     />
+        //   </View>
+        // ),
       }}>
       <Tab.Screen
-        name={'UserDashboard'}
+        name={'Dashboard'}
         component={UserDashboard}
         options={{
-          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
@@ -81,12 +80,12 @@ const Tabs = () => {
                 style={{
                   height: focused ? 20 : 18,
                   width: focused ? 20 : 18,
-                  tintColor: COLORS.black,
+                  tintColor: COLORS.blue,
                 }}
               />
               <Text
                 style={{
-                  color: COLORS.black,
+                  color: COLORS.blue,
                   ...FONTS.body5,
                 }}>
                 Home
@@ -95,53 +94,38 @@ const Tabs = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Requirement"
-        // component={Requirement}
+      <Tab.Screen
+        name="Setting"
+        component={Setting}
         options={{
+          // headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
-                source={icons.tasks}
+                source={icons.setting}
                 style={{
                   height: focused ? 20 : 18,
                   width: focused ? 20 : 18,
-                  tintColor: COLORS.black,
+                  tintColor: COLORS.blue,
                 }}
               />
               <Text
                 style={{
-                  color: COLORS.black,
+                  color: COLORS.blue,
                   ...FONTS.body5,
                 }}>
-                Requirement
+                Setting
               </Text>
             </View>
           ),
         }}
       />
       <Tab.Screen
-        name="Report"
-        // component={ReportsDisplay}
+        name="Calander"
+
+        component={Calander}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={icons.report}
-              resizeMode="contain"
-              style={{
-                height: focused ? 22 : 20,
-                width: focused ? 22 : 20,
-                tintColor: COLORS.white,
-              }}
-            />
-          ),
-          tabBarButton: props => <TabBarCustomButton {...props} />,
-        }}
-      />
-      <Tab.Screen
-        name="Attendance"
-        // component={Attendance}
-        options={{
+          // headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
@@ -149,24 +133,26 @@ const Tabs = () => {
                 style={{
                   height: focused ? 20 : 18,
                   width: focused ? 20 : 18,
-                  tintColor: COLORS.black,
+                  tintColor: COLORS.blue,
                 }}
               />
               <Text
                 style={{
-                  color: COLORS.black,
+                  color: COLORS.blue,
                   ...FONTS.body5,
                 }}>
-                Attendance
+                Calender
               </Text>
             </View>
           ),
+          // tabBarButton: props => <TabBarCustomButton {...props} />,
         }}
       />
       <Tab.Screen
         name="Account"
-        // component={Account}
+        component={Account}
         options={{
+          // headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
@@ -174,12 +160,12 @@ const Tabs = () => {
                 style={{
                   height: focused ? 20 : 18,
                   width: focused ? 20 : 18,
-                  tintColor: COLORS.black,
+                  tintColor: COLORS.blue,
                 }}
               />
               <Text
                 style={{
-                  color: COLORS.black,
+                  color: COLORS.blue,
                   ...FONTS.body5,
                 }}>
                 Account
@@ -187,7 +173,33 @@ const Tabs = () => {
             </View>
           ),
         }}
-      /> */}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          // headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Image
+                source={icons.profile}
+                style={{
+                  height: focused ? 20 : 18,
+                  width: focused ? 20 : 18,
+                  tintColor: COLORS.blue,
+                }}
+              />
+              <Text
+                style={{
+                  color: COLORS.blue,
+                  ...FONTS.body5,
+                }}>
+                Profile
+              </Text>
+            </View>
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
